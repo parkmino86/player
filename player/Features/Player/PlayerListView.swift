@@ -21,7 +21,9 @@ struct PlayerListView: View {
                             .font(.subheadline)
                     }
                 }
-                .onDelete(perform: deletePlayer) // 밀어서 삭제 기능 추가
+                .onDelete { offsets in
+                    viewModel.deletePlayer(at: offsets)
+                }
             }
             .navigationTitle("Players")
             .navigationBarItems(trailing: NavigationLink("Add", destination: AddPlayerView(viewModel: viewModel)))
@@ -30,9 +32,5 @@ struct PlayerListView: View {
                 print("Players loaded: \(viewModel.players)")
             }
         }
-    }
-
-    private func deletePlayer(at offsets: IndexSet) {
-        viewModel.deletePlayer(at: offsets)
     }
 }

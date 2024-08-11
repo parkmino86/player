@@ -89,6 +89,35 @@ extension DatabaseManager {
         }
         return team
     }
+    
+    
+    public func addPlayer(_ playerId: UUID, toTeam team: TeamDBModel) throws {
+        guard let dbQueue = dbQueue else { throw DataBaseError.operation(.notInitialized) }
+
+        try dbQueue.write { db in
+            let teamPlayer = TeamPlayerDBModel(teamId: team.id, playerId: playerId)
+            try teamPlayer.insert(db)
+        }
+    }
+    
+    public func removePlayer(_ playerId: UUID, fromTeam teamId: UUID) throws {
+        guard let dbQueue = dbQueue else { throw DataBaseError.operation(.notInitialized) }
+        try dbQueue.write { db in
+            // 팀-선수 관계 삭제
+            let teamPlayer = try TeamPlayerDBModel
+                .filter(Column("teamId") == teamId && Column("playerId") == playerId)
+                .fetchOne(db)
+            
+            if let teamPlayer = teamPlayer {
+                try teamPlayer.delete(db)
+                print("Player with ID \(playerId) removed from team with ID \(teamId) successfully.")
+            } else {
+                print("No matching team-player relationship found for deletion.")
+                throw DataBaseError.feature(.relationshipNotFound)
+            }
+        }
+    }
+
 }
 
 // MARK: - Player Management

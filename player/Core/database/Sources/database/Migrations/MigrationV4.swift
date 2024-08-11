@@ -24,6 +24,9 @@ struct MigrationV4: DatabaseMigrationProtocol {
                 t.column("id", .text).notNull().primaryKey().defaults(to: UUID().uuidString)
                 t.column("teamId", .text).notNull().references("teamDBModel", onDelete: .cascade)
                 t.column("playerId", .text).notNull().references("playerDBModel", onDelete: .cascade)
+                
+                // teamId와 playerId 조합에 대해 유니크 제약 조건 추가
+                t.uniqueKey(["teamId", "playerId"])
             }
             
             // 3. 임시 테이블 temp_team_player 생성

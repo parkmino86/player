@@ -26,6 +26,7 @@ enum DataBaseError: Error {
         case invalidTeamID
         case invalidPlayerID
         case playerNotFound
+        case relationshipNotFound
     }
     
     // 오류 설명 추가
@@ -49,6 +50,8 @@ enum DataBaseError: Error {
                 return "The player ID provided is invalid."
             case .playerNotFound:
                 return "The specified player was not found in the database."
+            case .relationshipNotFound:
+                return "The specified relationship between the team and the player was not found."
             }
         }
     }

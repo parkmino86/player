@@ -23,6 +23,8 @@
 		E31D6FDE2C67A36500B91B48 /* TeamPlayerListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31D6FDD2C67A36500B91B48 /* TeamPlayerListViewModel.swift */; };
 		E32432212C6848F000D807A3 /* AddTeamViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32432202C6848F000D807A3 /* AddTeamViewModel.swift */; };
 		E324322C2C68592000D807A3 /* database in Frameworks */ = {isa = PBXBuildFile; productRef = E324322B2C68592000D807A3 /* database */; };
+		E373964D2C68C57F0082DD19 /* AddTeamPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E373964C2C68C57F0082DD19 /* AddTeamPlayerView.swift */; };
+		E373964F2C68C58F0082DD19 /* AddTeamPlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E373964E2C68C58F0082DD19 /* AddTeamPlayerViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,7 +44,9 @@
 		E31D6FDB2C67A19C00B91B48 /* TeamPlayerListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamPlayerListView.swift; sourceTree = "<group>"; };
 		E31D6FDD2C67A36500B91B48 /* TeamPlayerListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamPlayerListViewModel.swift; sourceTree = "<group>"; };
 		E32432202C6848F000D807A3 /* AddTeamViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTeamViewModel.swift; sourceTree = "<group>"; };
-		E3BD3AB62C68618A00D70F3A /* database */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = database; sourceTree = SOURCE_ROOT; };
+		E373964C2C68C57F0082DD19 /* AddTeamPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTeamPlayerView.swift; sourceTree = "<group>"; };
+		E373964E2C68C58F0082DD19 /* AddTeamPlayerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTeamPlayerViewModel.swift; sourceTree = "<group>"; };
+		E3BD3AB62C68618A00D70F3A /* database */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = database; path = player/Core/database; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,7 +82,7 @@
 			children = (
 				E31D6FE52C67AB0A00B91B48 /* Entities */,
 				E31D6FE22C67AAB300B91B48 /* Features */,
-				E3BD3AB52C68614900D70F3A /* Core */,
+				E34E11062C68826D00FAFBFB /* Core */,
 				E31D6FAF2C67991600B91B48 /* playerApp.swift */,
 				E31D6FB12C67991600B91B48 /* ContentView.swift */,
 				E31D6FB32C67991700B91B48 /* Assets.xcassets */,
@@ -119,7 +123,6 @@
 			children = (
 				E324321F2C68489500D807A3 /* AddTeam */,
 				E324321E2C68487500D807A3 /* TeamList */,
-				E324321D2C68486500D807A3 /* TeamPlayerList */,
 			);
 			path = Team;
 			sourceTree = "<group>";
@@ -136,6 +139,7 @@
 		E324321D2C68486500D807A3 /* TeamPlayerList */ = {
 			isa = PBXGroup;
 			children = (
+				E373964B2C68C5680082DD19 /* AddTeamPlayer */,
 				E31D6FDB2C67A19C00B91B48 /* TeamPlayerListView.swift */,
 				E31D6FDD2C67A36500B91B48 /* TeamPlayerListViewModel.swift */,
 			);
@@ -145,6 +149,7 @@
 		E324321E2C68487500D807A3 /* TeamList */ = {
 			isa = PBXGroup;
 			children = (
+				E324321D2C68486500D807A3 /* TeamPlayerList */,
 				E31D6FD92C679E0400B91B48 /* TeamListView.swift */,
 				E31D6FCA2C6799C000B91B48 /* TeamListViewModel.swift */,
 			);
@@ -160,12 +165,21 @@
 			path = AddTeam;
 			sourceTree = "<group>";
 		};
-		E3BD3AB52C68614900D70F3A /* Core */ = {
+		E34E11062C68826D00FAFBFB /* Core */ = {
 			isa = PBXGroup;
 			children = (
 				E3BD3AB62C68618A00D70F3A /* database */,
 			);
 			path = Core;
+			sourceTree = "<group>";
+		};
+		E373964B2C68C5680082DD19 /* AddTeamPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				E373964C2C68C57F0082DD19 /* AddTeamPlayerView.swift */,
+				E373964E2C68C58F0082DD19 /* AddTeamPlayerViewModel.swift */,
+			);
+			path = AddTeamPlayer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -253,7 +267,9 @@
 				E31D6FB22C67991600B91B48 /* ContentView.swift in Sources */,
 				E32432212C6848F000D807A3 /* AddTeamViewModel.swift in Sources */,
 				E31D6FCB2C6799C000B91B48 /* TeamListViewModel.swift in Sources */,
+				E373964F2C68C58F0082DD19 /* AddTeamPlayerViewModel.swift in Sources */,
 				E31D6FD82C679DFB00B91B48 /* PlayerListView.swift in Sources */,
+				E373964D2C68C57F0082DD19 /* AddTeamPlayerView.swift in Sources */,
 				E31D6FCF2C679AF900B91B48 /* Team.swift in Sources */,
 				E31D6FCD2C6799E900B91B48 /* Player.swift in Sources */,
 				E31D6FB02C67991600B91B48 /* playerApp.swift in Sources */,

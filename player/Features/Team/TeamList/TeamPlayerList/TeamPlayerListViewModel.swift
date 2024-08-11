@@ -7,6 +7,7 @@
 
 import Combine
 import database
+import Foundation
 
 class TeamPlayerListViewModel: ObservableObject {
     @Published var players: [Player] = []
@@ -27,4 +28,21 @@ class TeamPlayerListViewModel: ObservableObject {
             print("Fetch players for team \(team.name) failed: \(error)")
         }
     }
+    
+    // 팀에서 선수를 제거하는 메서드
+    func removePlayer(at offsets: IndexSet) {
+        offsets.forEach { index in
+            let player = players[index]
+            
+            do {
+                // DatabaseManager를 사용하여 팀에서 선수 제거
+                try databaseManager.removePlayer(player.id, fromTeam: team.id)
+                print("Player \(player.name) removed from team \(team.name) successfully.")
+                fetchPlayers() // 삭제 후 플레이어 목록을 갱신
+            } catch {
+                print("Failed to remove player \(player.name) from team \(team.name): \(error)")
+            }
+        }
+    }
+
 }
