@@ -14,13 +14,9 @@
 ```plaintext
 player/
 │
-├── Entities/                          # 데이터베이스 엔티티 및 모델 정의
-│   ├── Player/
-│   │   ├── PlayerDBModel.swift        # Player 데이터베이스 모델
-│   ├── Team/
-│   │   ├── TeamDBModel.swift          # Team 데이터베이스 모델
-│   ├── TeamPlayer/
-│   │   ├── TeamPlayerDBModel.swift    # Team-Player 관계 데이터베이스 모델
+├── Entities/                          # 엔티티 및 모델 정의
+│   ├── Player/                        # 선수 관련 엔티티
+│   ├── Team/                          # 팀 관련 엔티티
 │
 ├── Features/                          # 주요 기능 관련 코드
 │   ├── Team/                          # 팀 관리 관련 뷰 및 ViewModel
@@ -31,31 +27,39 @@ player/
 │   │   │   ├── TeamListView.swift     # 팀 목록 뷰
 │   │   │   ├── TeamListViewModel.swift # 팀 목록 ViewModel
 │   │   ├── TeamPlayerList/            # 팀의 선수 목록 관리
-│   │       ├── AddTeamPlayerView.swift      # 선수 추가 뷰
-│   │       ├── AddTeamPlayerViewModel.swift # 선수 추가 ViewModel
-│   │       ├── TeamPlayerListView.swift     # 팀 선수 목록 뷰
-│   │       ├── TeamPlayerListViewModel.swift # 팀 선수 목록 ViewModel
+│   │       ├── AddTeamPlayer/         # 팀에 선수 추가 기능
+│   │       │   ├── AddTeamPlayerView.swift       # 선수 추가 뷰
+│   │       │   ├── AddTeamPlayerViewModel.swift  # 선수 추가 ViewModel
+│   │       ├── TeamPlayerListView.swift          # 팀 선수 목록 뷰
+│   │       ├── TeamPlayerListViewModel.swift     # 팀 선수 목록 ViewModel
+│   │
 │   ├── Player/                        # 선수 관리 관련 뷰 및 ViewModel
-│   │   ├── AddPlayerView.swift        # 선수 추가 뷰
-│   │   ├── PlayerListView.swift       # 전체 선수 목록 뷰
-│   │   ├── PlayerViewModel.swift      # 선수 관리 ViewModel
+│       ├── AddPlayerView.swift        # 선수 추가 뷰
+│       ├── PlayerListView.swift       # 전체 선수 목록 뷰
+│       ├── PlayerViewModel.swift      # 선수 관리 ViewModel
 │
 ├── Core/                              # 코어 로직 관련 코드
 │   ├── database/                      # SQLite 데이터베이스 및 마이그레이션 관련 파일
-│   │   ├── Migrations/                # 마이그레이션 파일들 (V1 ~ V4)
-│   │   │   ├── MigrationV1.swift      # 초기 테이블 생성
-│   │   │   ├── MigrationV2.swift      # team_player 관계 테이블 추가
-│   │   │   ├── MigrationV3.swift      # player 테이블에서 score 필드를 backnumber로 변경
-│   │   │   ├── MigrationV4.swift      # 외래 키 수정 및 테이블 이름 변경
-│   │   ├── DatabaseManager.swift      # 데이터베이스 관리 및 마이그레이션 로직
-│   │   ├── DatabaseError.swift        # 데이터베이스 관련 오류 처리
+│       ├── Package/                   # 패키지 관련 설정
+│       ├── Sources/                   # 소스 코드
+│           ├── database/              # 데이터베이스 관련 코드
+│               ├── Migrations/        # 마이그레이션 파일들 (V1 ~ V4)
+│               │   ├── MigrationV1.swift      # 초기 테이블 생성
+│               │   ├── MigrationV2.swift      # team_player 관계 테이블 추가
+│               │   ├── MigrationV3.swift      # player 테이블에서 score 필드를 backnumber로 변경
+│               │   ├── MigrationV4.swift      # 외래 키 수정 및 테이블 이름 변경
+│               ├── Models/           # 데이터베이스 모델 정의
+│               │   ├── PlayerDBModel.swift    # Player 데이터베이스 모델
+│               │   ├── TeamDBModel.swift      # Team 데이터베이스 모델
+│               │   ├── TeamPlayerDBModel.swift # Team-Player 관계 데이터베이스 모델
+│               ├── DataBaseError.swift        # 데이터베이스 관련 오류 처리
+│               ├── DatabaseManager.swift      # 데이터베이스 관리 및 마이그레이션 로직
+│               ├── DatabaseMigrationProtocol.swift # 마이그레이션 프로토콜 정의
 │
 ├── Tests/                             # 테스트 코드
-│   ├── databaseTests/                 # 데이터베이스 관련 테스트
-│   │   ├── databaseTests.swift        # 데이터베이스 테스트 코드
-│   │   └── Package.swift              # 테스트 패키지 설정
+│   ├── databaseTests.swift            # 데이터베이스 테스트 코드
 │
 └── playerApp/                         # 프로젝트 메인 파일 및 설정
-    ├── player.xcodeproj               # Xcode 프로젝트 파일
     ├── playerApp.swift                # 애플리케이션 진입점
-    └── ContentView.swift              # 기본 ContentView
+    ├── ContentView.swift              # 기본 ContentView
+    ├── player.xcodeproj               # Xcode 프로젝트 파일
